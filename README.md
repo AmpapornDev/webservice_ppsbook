@@ -1,4 +1,5 @@
 <b>Web service of PPSBookApp</b></br>
+<b>Language PHP , Database : MySql</b></br>
 </br>
 1.ws_all_book.php : โชวรายการหนังสือทั้งหมด</br>
 2.ws_all_category.php : โขวหมวดหนังสือ</br>
