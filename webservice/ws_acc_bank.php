@@ -5,26 +5,21 @@ include('../lib/function.php');
 // call function fix cross origin for PHP
 FIX_PHP_CORSS_ORIGIN();
 
-$id_member = '1';
-$sql = "select * from tb_book left join tb_cart_order on tb_book.id_book = tb_cart_order.id_book  where tb_cart_order.id_member = '".$id_member."' 
- and tb_cart_order.status_cart_order ='wait' order by tb_cart_order.add_cart_order desc";
+$sql ="select * from tb_acc_bank order by id_acc_bank asc";
 $query = $mysqli->query($sql);
 $count = $query->num_rows;
 
 if($count > 0){
 
 	while($result = $query->fetch_assoc()){
-		$rows[]=$result;
-	}
-
+        $rows[]=$result;
+    }
 	$data = json_encode($rows,JSON_UNESCAPED_UNICODE);
 	$totaldata = sizeof($rows);
 	$results = $data;
 
 }else{
-
-	$data_insert = 'null';
-    $results = json_encode( $data_insert );
+	$results = '{"results":null}';
 }
 
 echo $results;

@@ -37,8 +37,8 @@ if ( $count > 0 ) {
 
 } else {
 
-    $sql = "INSERT INTO tb_cart_order(id_payment, id_member, id_book, name_book, price_book,qty_book,add_cart_order,update_cart_order) 
-VALUES('0','".$var_id_member."','".$var_id_book."','".$var_name_book."','".$var_price_book."','".$var_qty."','".$var_date."','".$var_date."')";
+    $sql = "INSERT INTO tb_cart_order(id_payment, id_member, id_book, name_book, price_book,qty_book,status_cart_order,add_cart_order,update_cart_order) 
+VALUES('0','".$var_id_member."','".$var_id_book."','".$var_name_book."','".$var_price_book."','".$var_qty."','wait','".$var_date."','".$var_date."')";
     $resource = $mysqli->query( $sql );
     if ( $resource ) {
         $data_insert = 'success';
