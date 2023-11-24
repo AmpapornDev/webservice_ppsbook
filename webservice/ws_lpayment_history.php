@@ -4,22 +4,24 @@ include('../lib/connect_database.php');
 include('../lib/function.php');
 // call function fix cross origin for PHP
 FIX_PHP_CORSS_ORIGIN();
-$id_book = $_GET['id_book'];
-$sql ="select * from tb_book left join tb_book_category on tb_book.id_book_cate = tb_book_category.id_book_cate 
-where tb_book.id_book = '".$id_book."'";
+
+$var_id_payment = $_GET['var_id_payment'];
+$var_id_member = $_GET['var_id_member'];
+$sql = "select * from tb_payment where id_payment = '".$var_id_payment."' and id_member = '".$var_id_member."'";
 $query = $mysqli->query($sql);
 $count = $query->num_rows;
 
 if($count > 0){
 
-	$result = $query->fetch_assoc();
-	$rows=$result;
+    $rows = $query->fetch_assoc();
 	$data = json_encode($rows,JSON_UNESCAPED_UNICODE);
 	$totaldata = sizeof($rows);
 	$results = $data;
 
 }else{
-	$results = '{"results":null}';
+
+	$data_insert = 'null';
+    $results = json_encode( $data_insert );
 }
 
 echo $results;

@@ -5,9 +5,9 @@ include('../lib/function.php');
 // call function fix cross origin for PHP
 FIX_PHP_CORSS_ORIGIN();
 
-$id_member = $_GET['var_id'];
-$sql = "select * from tb_book left join tb_cart_order on tb_book.id_book = tb_cart_order.id_book  where tb_cart_order.id_member = '".$id_member."' 
- and tb_cart_order.status_cart_order ='wait' order by tb_cart_order.add_cart_order desc";
+$var_id_payment = $_GET['var_id_payment'];
+$var_id_member = $_GET['var_id_member'];
+$sql = "select * from tb_cart_order where id_payment = '".$var_id_payment."' and id_member = '".$var_id_member."' order by add_cart_order desc";
 $query = $mysqli->query($sql);
 $count = $query->num_rows;
 
@@ -23,8 +23,8 @@ if($count > 0){
 
 }else{
 
-	$data = 'null';
-    $results = json_encode( $data );
+	$data_insert = '{result:null}';
+    $results = json_encode( $data_insert );
 }
 
 echo $results;

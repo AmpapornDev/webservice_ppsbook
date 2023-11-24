@@ -17,7 +17,9 @@ if($count > 0){
 	$results = $data;
 
 }else{
-	$results = '{"results":null}';
+
+	$data_insert = 'null';
+    $results = json_encode( $data_insert );
 }
 
 echo $results;
